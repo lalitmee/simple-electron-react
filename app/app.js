@@ -26,7 +26,7 @@ class Timer extends React.Component {
           <h1>Hello</h1>
           <Segment.Group inverted raised>
             <Segment>
-              <Header>Timer App</Header>
+              <Header>Timer</Header>
               <Label>
                 <Icon size="big" name="clock" />
                 {this.state.timeLeft}
