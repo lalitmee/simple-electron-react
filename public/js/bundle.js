@@ -30459,7 +30459,7 @@ var Timer = function (_React$Component) {
       var isPlaying = this.state.isPlaying;
       var isClicked = this.state.isClicked;
       var isTrue = this.state.isTrue;
-      return _react2.default.createElement("div", null, _react2.default.createElement(_semanticUiReact.Container, { textAlign: "center" }, _react2.default.createElement("h1", null, "Hello"), _react2.default.createElement(_semanticUiReact.Segment.Group, { inverted: true, raised: true }, _react2.default.createElement(_semanticUiReact.Segment, null, _react2.default.createElement(_semanticUiReact.Header, null, "Timer App"), _react2.default.createElement(_semanticUiReact.Label, null, _react2.default.createElement(_semanticUiReact.Icon, { size: "big", name: "clock" }), this.state.timeLeft), _react2.default.createElement(_semanticUiReact.Button, {
+      return _react2.default.createElement("div", null, _react2.default.createElement(_semanticUiReact.Container, { textAlign: "center" }, _react2.default.createElement("h1", null, "Hello"), _react2.default.createElement(_semanticUiReact.Segment.Group, { inverted: true, raised: true }, _react2.default.createElement(_semanticUiReact.Segment, null, _react2.default.createElement(_semanticUiReact.Header, null, "Timer"), _react2.default.createElement(_semanticUiReact.Label, null, _react2.default.createElement(_semanticUiReact.Icon, { size: "big", name: "clock" }), this.state.timeLeft), _react2.default.createElement(_semanticUiReact.Button, {
         inverted: true,
         color: "brown",
         size: "huge",
