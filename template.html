@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .email-container {
+            background: #e1e1e1;
+        }
+        
+        h2 {
+            padding: 1%;
+        }
+        
+        .container {
+            padding: 1px;
+            width: 60%;
+            margin: 0 auto;
+            background: white;
+        }
+        
+        #header-inner {
+            width: 60%;
+            margin: 0 auto;
+        }
+        
+        #inner-footer {
+            width: 60%;
+            margin: 0 auto;
+        }
+        
+        .detail-table {
+            padding-left: 2%;
+            padding-right: 2%;
+        }
+        
+        .items-table {
+            margin-top: 2%;
+            padding-bottom: 2%;
+            padding-left: 2%;
+            padding-right: 2%;
+        }
+        
+        .price-table {
+            margin-top: 2%;
+            padding-bottom: 2%;
+            padding-left: 2%;
+            padding-right: 2%;
+        }
+        
+        .text-color {
+            color: #6a5f9b;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .table-bordered {
+            border: none !important;
+        }
+        
+        table {
+            width: 100%;
+        }
+        
+        table tr th {
+            color: #6a5f9b;
+            padding: 5px;
+            font-size: 20px;
+            font-weight: 400;
+        }
+        
+        .table-row td {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        
+        .right {
+            text-align: right;
+        }
+        
+        .colored {
+            background: #c4c0d8;
+            color: white;
+            text-align: center;
+        }
+        
+        tbody {
+            color: #6a5f9b;
+        }
+    </style>
+</head>
+
+<body class="email-container">
+    <header>
+        <div id="header-inner">
+            <a href="https://ballyhoo.today" target="_top">
+                <img src="https://res.cloudinary.com/dp67gawk6/image/upload/v1481790884/ballyhoo/EMAIL/header.png" alt="B A L L Y H O O T O D A Y" width="100%" class="img-responsive" style="display: block;" />
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="detail-table">
+            <h2 class="text-color">
+                <center> <strong>Merchant Missing Data</strong> </center>
+            </h2>
+            <table>
+                <thead>
+
+                    <tr class="colored text-center">
+                        <th width="17%">BName</th>
+                        <th width="17%">Mobile</th>
+                        <th width="17%">Longitude</th>
+                        <th width="17%">Latitude</th>
+                        <th width="17%">City</th>
+                        <th width="17%">Locatlity</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr class="table-row">
+                        <td>{{$array['business_name']}}</td>
+                        <td>{{$array['mobile']}}</td>
+                        <td>{{$array['longitude']}}</td>
+                        <td>{{$array['latitude']}}</td>
+                        <td>{{$array['city']}}</td>
+                        <td>{{$array['locality']}}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <div id="inner-footer">
+            <a href="https://ballyhoo.today" target="_top">
+                <img src="https://res.cloudinary.com/dp67gawk6/image/upload/v1481790882/ballyhoo/EMAIL/footer.png" alt="B A L L Y H O O T O D A Y" width="100%" class="img-responsive" style="display: block;" />
+            </a>
+        </div>
+    </footer>
+    <script src="bootstrap.min.js"></script>
+</body>
+
+</html>
