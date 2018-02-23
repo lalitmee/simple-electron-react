@@ -15,9 +15,51 @@
     <div id="content">
 
     </div>
+    <!-- <script>
+        // const usbScanner = require('node-usb-barcode-scanner').usbScanner;
+        // const getDevices = require('node-usb-barcode-scanner').getDevices;
+        // const usb = require('usb');
+        const monitor = require('node-usb-detection');
+
+
+        // //get array of attached HID devices
+        // const connectedHidDevices = getDevices();
+
+        // //print devices
+        // console.log(connectedHidDevices);
+
+        // //initialize new usbScanner - takes optional parmeters vendorId and hidMap - check source for details
+        // const scanner = new usbScanner();
+
+        // //scanner emits a data event once a barcode has been read and parsed
+        // scanner.on('data', function(code) {
+        //     console.log('recieved code : ' + code);
+        // });
+
+        // const list = ;
+        // console.log(usb.getDeviceList());
+
+
+
+        console.log("Usb Devices:\n", monitor.list());
+
+        monitor.add(function(device) {
+            console.log("added device:\n", device);
+        });
+
+        monitor.remove(function(device) {
+            console.log("removed device:\n", device);
+        });
+
+        monitor.change(function(device) {
+            console.log("device changed:\n", device);
+        });
+    </script> -->
 
     <script src="./public/js/bundle.js">
     </script>
+    <!-- <script src="node_modules/node-usb-barcode-scanner/usbscanner.js"></script> -->
+
 </body>
 
 </html>

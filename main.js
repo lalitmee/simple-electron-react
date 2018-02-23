@@ -1,6 +1,10 @@
 'use strict';
 
 const electron = require('electron');
+
+// const usb = require('usb');
+// const usbDetect = require('usb-detection');
+
 // Module to control application life.
 const app = electron.app;
 // Module to create native browser window.
@@ -41,6 +45,23 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', createWindow);
+
+// usb.on('detach', function(device) {
+//   console.log(device);
+// });
+
+// console.log('USB');
+
+// usbDetect.startMonitoring();
+// usbDetect
+//   .find()
+//   .then(function(devices) {
+//     console.log(devices);
+//   })
+//   .catch(function(err) {
+//     console.log(err);
+//   });
+// usbDetect.stopMonitoring();
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {

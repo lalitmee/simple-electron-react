@@ -1,6 +1,8 @@
 // ES6 Component
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+// import usb from 'usb';
+// import usbDetect from 'usb-detection';
 import {
   Item,
   Message,
@@ -9,17 +11,39 @@ import {
   Container,
   Segment,
   Label,
-  Icon
-} from "semantic-ui-react";
+  Icon,
+  Form,
+  TextArea
+} from 'semantic-ui-react';
 
-import "semantic-ui-css/semantic.min.css";
+import 'semantic-ui-css/semantic.min.css';
 
 // Search component created as a class
 class Timer extends React.Component {
+  // deviceList() {
+  //   usbDetect.startMonitoring();
+  //   usbDetect
+  //     .find()
+  //     .then(function(devices) {
+  //       console.log(devices);
+  //     })
+  //     .catch(function(err) {
+  //       console.log(err);
+  //     });
+  //   usbDetect.stopMonitoring();
+  // }
+
+  // deviceList() {
+  //   usb.on('attach', function(device) {
+  //     console.log(device);
+  //   });
+  // }
+
   render() {
     const isPlaying = this.state.isPlaying;
     const isClicked = this.state.isClicked;
     const isTrue = this.state.isTrue;
+    const isDetected = this.state.isDetected;
     return (
       <div>
         <Container textAlign="center">
@@ -39,7 +63,7 @@ class Timer extends React.Component {
                 primary
                 onClick={isPlaying ? this.stopTimer : this.startTimer}
               >
-                {isPlaying ? "Pause" : "Start"}
+                {isPlaying ? 'Pause' : 'Start'}
               </Button>
             </Segment>
             <Segment>
@@ -49,7 +73,7 @@ class Timer extends React.Component {
                 size="huge"
                 onClick={isClicked ? this.showBye : this.showHello}
               >
-                {isClicked ? "Bye" : "Hello"}
+                {isClicked ? 'Bye' : 'Hello'}
               </Button>
             </Segment>
             <Segment>
@@ -59,21 +83,35 @@ class Timer extends React.Component {
                 size="huge"
                 onClick={isTrue ? this.noD : this.showD}
               >
-                {isTrue ? "Clicked" : "Click Me"}
+                {isTrue ? 'Clicked' : 'Click Me'}
               </Button>
               <Message
                 header={
                   isTrue
-                    ? "You Have Clicked The Button"
-                    : "Click The Button to see the Content"
+                    ? 'You Have Clicked The Button'
+                    : 'Click The Button to see the Content'
                 }
               />
               {isTrue && (
                 <Item.Header>
-                  {isTrue ? "Hello My name is Simple React Electron App" : ""}
+                  {isTrue ? 'Hello My name is Simple React Electron App' : ''}
                 </Item.Header>
               )}
             </Segment>
+            <Segment>
+              <Header>BarCode Scanner</Header>
+              <Button
+                inverted
+                color="blue"
+                size="huge"
+                primary
+                onClick={isDetected ? this.noDetect : this.yesDetect}
+              >
+                {isDetected ? 'Hide' : 'Show'}
+              </Button>
+              {/* <Message>{isDetected && deviceList}</Message> */}
+            </Segment>
+            <Segment>{console.log('HELLO ELECTRON')}</Segment>
           </Segment.Group>
         </Container>
       </div>
@@ -85,7 +123,8 @@ class Timer extends React.Component {
       timeLeft: 60,
       isPlaying: false,
       isClicked: false,
-      isTrue: false
+      isTrue: false,
+      isDetected: false
     };
     this.startTimer = this.startTimer.bind(this);
     this.stopTimer = this.stopTimer.bind(this);
@@ -93,6 +132,9 @@ class Timer extends React.Component {
     this.showBye = this.showBye.bind(this);
     this.showD = this.showD.bind(this);
     this.noD = this.noD.bind(this);
+    this.noDetect = this.noDetect.bind(this);
+    this.yesDetect = this.yesDetect.bind(this);
+    // usbDetect.startMonitoring();
   }
   tick() {
     const currentDate = new Date();
@@ -111,6 +153,11 @@ class Timer extends React.Component {
         }));
     }
   }
+
+  // getDeviceList() {
+  //   this.setState = "No Devices";
+
+  // }
 
   showD() {
     this.setState({
@@ -135,6 +182,19 @@ class Timer extends React.Component {
       isClicked: false
     });
   }
+
+  yesDetect() {
+    this.setState({
+      isDetected: true
+    });
+  }
+
+  noDetect() {
+    this.setState({
+      isDetected: false
+    });
+  }
+
   startTimer() {
     this.timerID = setInterval(() => this.tick(), 1000);
     this.setState({
@@ -154,11 +214,9 @@ class Timer extends React.Component {
 
   componentDidMount() {
     showBye();
-  }
-
-  componentDidMount() {
     noD();
+    noDetect();
   }
 }
 
-ReactDOM.render(<Timer />, document.getElementById("content"));
+ReactDOM.render(<Timer />, document.getElementById('content'));

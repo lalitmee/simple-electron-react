@@ -30439,14 +30439,17 @@ function _classCallCheck(instance, Constructor) {
 function _possibleConstructorReturn(self, call) {
   if (!self) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+  }return call && ((typeof call === 'undefined' ? 'undefined' : _typeof(call)) === "object" || typeof call === "function") ? call : self;
 }
 
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === 'undefined' ? 'undefined' : _typeof(superClass)));
   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 } // ES6 Component
+
+// import usb from 'usb';
+// import usbDetect from 'usb-detection';
 
 
 // Search component created as a class
@@ -30454,30 +30457,57 @@ var Timer = function (_React$Component) {
   _inherits(Timer, _React$Component);
 
   _createClass(Timer, [{
-    key: "render",
+    key: 'render',
+
+    // deviceList() {
+    //   usbDetect.startMonitoring();
+    //   usbDetect
+    //     .find()
+    //     .then(function(devices) {
+    //       console.log(devices);
+    //     })
+    //     .catch(function(err) {
+    //       console.log(err);
+    //     });
+    //   usbDetect.stopMonitoring();
+    // }
+
+    // deviceList() {
+    //   usb.on('attach', function(device) {
+    //     console.log(device);
+    //   });
+    // }
+
     value: function render() {
       var isPlaying = this.state.isPlaying;
       var isClicked = this.state.isClicked;
       var isTrue = this.state.isTrue;
-      return _react2.default.createElement("div", null, _react2.default.createElement(_semanticUiReact.Container, { textAlign: "center" }, _react2.default.createElement("h1", null, "Hello"), _react2.default.createElement(_semanticUiReact.Segment.Group, { inverted: true, raised: true }, _react2.default.createElement(_semanticUiReact.Segment, null, _react2.default.createElement(_semanticUiReact.Header, null, "Timer"), _react2.default.createElement(_semanticUiReact.Label, null, _react2.default.createElement(_semanticUiReact.Icon, { size: "big", name: "clock" }), this.state.timeLeft), _react2.default.createElement(_semanticUiReact.Button, {
+      var isDetected = this.state.isDetected;
+      return _react2.default.createElement('div', null, _react2.default.createElement(_semanticUiReact.Container, { textAlign: 'center' }, _react2.default.createElement('h1', null, 'Hello'), _react2.default.createElement(_semanticUiReact.Segment.Group, { inverted: true, raised: true }, _react2.default.createElement(_semanticUiReact.Segment, null, _react2.default.createElement(_semanticUiReact.Header, null, 'Timer'), _react2.default.createElement(_semanticUiReact.Label, null, _react2.default.createElement(_semanticUiReact.Icon, { size: 'big', name: 'clock' }), this.state.timeLeft), _react2.default.createElement(_semanticUiReact.Button, {
         inverted: true,
-        color: "brown",
-        size: "huge",
+        color: 'brown',
+        size: 'huge',
         primary: true,
         onClick: isPlaying ? this.stopTimer : this.startTimer
-      }, isPlaying ? "Pause" : "Start")), _react2.default.createElement(_semanticUiReact.Segment, null, _react2.default.createElement(_semanticUiReact.Button, {
+      }, isPlaying ? 'Pause' : 'Start')), _react2.default.createElement(_semanticUiReact.Segment, null, _react2.default.createElement(_semanticUiReact.Button, {
         inverted: true,
-        color: "orange",
-        size: "huge",
+        color: 'orange',
+        size: 'huge',
         onClick: isClicked ? this.showBye : this.showHello
-      }, isClicked ? "Bye" : "Hello")), _react2.default.createElement(_semanticUiReact.Segment, null, _react2.default.createElement(_semanticUiReact.Button, {
+      }, isClicked ? 'Bye' : 'Hello')), _react2.default.createElement(_semanticUiReact.Segment, null, _react2.default.createElement(_semanticUiReact.Button, {
         inverted: true,
-        color: "green",
-        size: "huge",
+        color: 'green',
+        size: 'huge',
         onClick: isTrue ? this.noD : this.showD
-      }, isTrue ? "Clicked" : "Click Me"), _react2.default.createElement(_semanticUiReact.Message, {
-        header: isTrue ? "You Have Clicked The Button" : "Click The Button to see the Content"
-      }), isTrue && _react2.default.createElement(_semanticUiReact.Item.Header, null, isTrue ? "Hello My name is Simple React Electron App" : "")))));
+      }, isTrue ? 'Clicked' : 'Click Me'), _react2.default.createElement(_semanticUiReact.Message, {
+        header: isTrue ? 'You Have Clicked The Button' : 'Click The Button to see the Content'
+      }), isTrue && _react2.default.createElement(_semanticUiReact.Item.Header, null, isTrue ? 'Hello My name is Simple React Electron App' : '')), _react2.default.createElement(_semanticUiReact.Segment, null, _react2.default.createElement(_semanticUiReact.Header, null, 'BarCode Scanner'), _react2.default.createElement(_semanticUiReact.Button, {
+        inverted: true,
+        color: 'blue',
+        size: 'huge',
+        primary: true,
+        onClick: isDetected ? this.noDetect : this.yesDetect
+      }, isDetected ? 'Hide' : 'Show')), _react2.default.createElement(_semanticUiReact.Segment, null, console.log('HELLO ELECTRON')))));
     }
   }]);
 
@@ -30490,7 +30520,8 @@ var Timer = function (_React$Component) {
       timeLeft: 60,
       isPlaying: false,
       isClicked: false,
-      isTrue: false
+      isTrue: false,
+      isDetected: false
     };
     _this.startTimer = _this.startTimer.bind(_this);
     _this.stopTimer = _this.stopTimer.bind(_this);
@@ -30498,11 +30529,14 @@ var Timer = function (_React$Component) {
     _this.showBye = _this.showBye.bind(_this);
     _this.showD = _this.showD.bind(_this);
     _this.noD = _this.noD.bind(_this);
+    _this.noDetect = _this.noDetect.bind(_this);
+    _this.yesDetect = _this.yesDetect.bind(_this);
+    // usbDetect.startMonitoring();
     return _this;
   }
 
   _createClass(Timer, [{
-    key: "tick",
+    key: 'tick',
     value: function tick() {
       var currentDate = new Date();
       switch (!this.state.date) {
@@ -30520,36 +30554,56 @@ var Timer = function (_React$Component) {
           });
       }
     }
+
+    // getDeviceList() {
+    //   this.setState = "No Devices";
+
+    // }
+
   }, {
-    key: "showD",
+    key: 'showD',
     value: function showD() {
       this.setState({
         isTrue: true
       });
     }
   }, {
-    key: "noD",
+    key: 'noD',
     value: function noD() {
       this.setState({
         isTrue: false
       });
     }
   }, {
-    key: "showHello",
+    key: 'showHello',
     value: function showHello() {
       this.setState({
         isClicked: true
       });
     }
   }, {
-    key: "showBye",
+    key: 'showBye',
     value: function showBye() {
       this.setState({
         isClicked: false
       });
     }
   }, {
-    key: "startTimer",
+    key: 'yesDetect',
+    value: function yesDetect() {
+      this.setState({
+        isDetected: true
+      });
+    }
+  }, {
+    key: 'noDetect',
+    value: function noDetect() {
+      this.setState({
+        isDetected: false
+      });
+    }
+  }, {
+    key: 'startTimer',
     value: function startTimer() {
       var _this2 = this;
 
@@ -30561,7 +30615,7 @@ var Timer = function (_React$Component) {
       });
     }
   }, {
-    key: "stopTimer",
+    key: 'stopTimer',
     value: function stopTimer() {
       clearInterval(this.timerID);
       this.setState({
@@ -30570,26 +30624,23 @@ var Timer = function (_React$Component) {
       });
     }
   }, {
-    key: "componentWillUnmount",
+    key: 'componentWillUnmount',
     value: function componentWillUnmount() {
       stopTimer();
     }
   }, {
-    key: "componentDidMount",
+    key: 'componentDidMount',
     value: function componentDidMount() {
       showBye();
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
       noD();
+      noDetect();
     }
   }]);
 
   return Timer;
 }(_react2.default.Component);
 
-_reactDom2.default.render(_react2.default.createElement(Timer, null), document.getElementById("content"));
+_reactDom2.default.render(_react2.default.createElement(Timer, null), document.getElementById('content'));
 
 /***/ }),
 /* 456 */
