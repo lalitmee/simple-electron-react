@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import usb from 'usb';
-// import usbDetect from 'usb-detection';
+import usbDetect from 'usb-detection';
 import {
   Item,
   Message,
@@ -20,18 +20,18 @@ import 'semantic-ui-css/semantic.min.css';
 
 // Search component created as a class
 class Timer extends React.Component {
-  // deviceList() {
-  //   usbDetect.startMonitoring();
-  //   usbDetect
-  //     .find()
-  //     .then(function(devices) {
-  //       console.log(devices);
-  //     })
-  //     .catch(function(err) {
-  //       console.log(err);
-  //     });
-  //   usbDetect.stopMonitoring();
-  // }
+  deviceList() {
+    usbDetect.startMonitoring();
+    usbDetect
+      .find()
+      .then(function(devices) {
+        console.log(devices);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+    usbDetect.stopMonitoring();
+  }
 
   // deviceList() {
   //   usb.on('attach', function(device) {
@@ -109,7 +109,7 @@ class Timer extends React.Component {
               >
                 {isDetected ? 'Hide' : 'Show'}
               </Button>
-              {/* <Message>{isDetected && deviceList}</Message> */}
+              <Message>{isDetected && deviceList}</Message>
             </Segment>
             <Segment>{console.log('HELLO ELECTRON')}</Segment>
           </Segment.Group>
