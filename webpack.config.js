@@ -6,6 +6,7 @@ const extractCSS = new ExtractTextPlugin('semantic/semantic.min.css');
 
 const config = {
   entry: './app/app.js',
+  target: 'node',
   // externals: [nodeExternals(), 'node_helper'],
   output: {
     path: path.resolve(__dirname, 'public', 'js'),
@@ -64,6 +65,10 @@ const config = {
       debug: true
     })
   ],
+
+  externals: {
+    'usb-detection': 'commonjs usb-detection'
+  },
 
   node: {
     fs: 'empty',

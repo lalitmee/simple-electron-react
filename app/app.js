@@ -20,19 +20,6 @@ import 'semantic-ui-css/semantic.min.css';
 
 // Search component created as a class
 class Timer extends React.Component {
-  deviceList() {
-    usbDetect.startMonitoring();
-    usbDetect
-      .find()
-      .then(function(devices) {
-        console.log(devices);
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
-    usbDetect.stopMonitoring();
-  }
-
   // deviceList() {
   //   usb.on('attach', function(device) {
   //     console.log(device);
@@ -109,7 +96,7 @@ class Timer extends React.Component {
               >
                 {isDetected ? 'Hide' : 'Show'}
               </Button>
-              <Message>{isDetected && deviceList}</Message>
+              <Message>{isDetected && this.deviceList}</Message>
             </Segment>
             <Segment>{console.log('HELLO ELECTRON')}</Segment>
           </Segment.Group>
@@ -134,6 +121,7 @@ class Timer extends React.Component {
     this.noD = this.noD.bind(this);
     this.noDetect = this.noDetect.bind(this);
     this.yesDetect = this.yesDetect.bind(this);
+    this.deviceList = this.deviceList.bind(this);
     // usbDetect.startMonitoring();
   }
   tick() {
@@ -163,6 +151,19 @@ class Timer extends React.Component {
     this.setState({
       isTrue: true
     });
+  }
+
+  deviceList() {
+    usbDetect.startMonitoring();
+    usbDetect
+      .find()
+      .then(function(devices) {
+        console.log(devices);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+    usbDetect.stopMonitoring();
   }
 
   noD() {
