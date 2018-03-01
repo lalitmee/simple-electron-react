@@ -1,8 +1,9 @@
 // ES6 Component
 import React from 'react';
 import ReactDOM from 'react-dom';
-import usb from 'usb';
-// import usbDetect from 'usb-detection';
+//import usb from 'usb';
+ import usbDetect from 'usb-detection';
+ import printer from 'node-printer';
 import {
   Item,
   Message,
@@ -20,9 +21,9 @@ import 'semantic-ui-css/semantic.min.css';
 
 // Search component created as a class
 class Timer extends React.Component {
-  deviceList() {
+  /*deviceList() {
     console.log(usb.getDeviceList());
-  }
+  } */
 
   render() {
     const isPlaying = this.state.isPlaying;
@@ -120,6 +121,9 @@ class Timer extends React.Component {
     this.noDetect = this.noDetect.bind(this);
     this.yesDetect = this.yesDetect.bind(this);
     this.deviceList = this.deviceList.bind(this);
+    usbDetect.startMonitoring();
+    usbDetect.stopMonitoring();
+    this.demo();
     // usbDetect.startMonitoring();
   }
   tick() {
@@ -151,18 +155,22 @@ class Timer extends React.Component {
     });
   }
 
-  // deviceList() {
-  //   usbDetect.startMonitoring();
-  //   usbDetect
-  //     .find()
-  //     .then(function(devices) {
-  //       console.log(devices);
-  //     })
-  //     .catch(function(err) {
-  //       console.log(err);
-  //     });
-  //   usbDetect.stopMonitoring();
-  // }
+  deviceList() {
+   
+    /*usbDetect
+      .find()
+      .then(function(devices) {
+        
+      })
+      .catch(function(err) {
+        console.log(err);
+      }); */
+     
+  // usbDetect.on('add', function(device) { console.log('add', device); });
+
+
+    
+  }
 
   noD() {
     this.setState({
@@ -193,6 +201,24 @@ class Timer extends React.Component {
       isDetected: false
     });
   }
+  
+  demo () {
+
+    usbDetect.find().then(function(devices) { console.log(devices); }).catch(function(err) { console.log(err); });
+
+    usbDetect.find(3118,516,function(err, devices) { 
+      console.log('find', devices, err); 
+    });
+
+    usbDetect.find(6790,30084,function(err, devices) {  
+      console.log('find_printer', devices, err); 
+      console.log(devices[0]['deviceName']);
+      var prin = new printer(devices[0]['deviceName']);
+      console.log(prin);
+      console.log(printer.list());
+    });
+  }
+  
 
   startTimer() {
     this.timerID = setInterval(() => this.tick(), 1000);

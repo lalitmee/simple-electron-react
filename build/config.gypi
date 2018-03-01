@@ -10,13 +10,11 @@
   "variables": {
     "asan": 0,
     "coverage": "false",
-    "debug_devtools": "node",
     "debug_http2": "false",
     "debug_nghttp2": "false",
     "force_dynamic_crt": 0,
     "gas_version": "2.23",
     "host_arch": "x64",
-    "icu_data_file": "icudt60l.dat",
     "icu_data_in": "../../deps/icu-small/source/data/in/icudt60l.dat",
     "icu_endianness": "l",
     "icu_gyp_path": "tools/icu/icu-generic.gyp",
@@ -41,6 +39,7 @@
     "node_shared_openssl": "false",
     "node_shared_zlib": "false",
     "node_tag": "",
+    "node_target_type": "executable",
     "node_use_bundled_v8": "true",
     "node_use_dtrace": "false",
     "node_use_etw": "false",
@@ -53,8 +52,6 @@
     "openssl_no_asm": 0,
     "shlib_suffix": "so.59",
     "target_arch": "x64",
-    "uv_parent_path": "/deps/uv/",
-    "uv_use_dtrace": "false",
     "v8_enable_gdbjit": 0,
     "v8_enable_i18n_support": 1,
     "v8_enable_inspector": 1,
@@ -65,11 +62,8 @@
     "v8_trace_maps": 0,
     "v8_use_snapshot": "true",
     "want_separate_host_toolset": 0,
-    "nodedir": "/home/lalit/.electron-gyp/.node-gyp/iojs-1.8.2",
+    "nodedir": "/home/neo/.node-gyp/0.37.4",
     "standalone_static_library": 1,
-    "target": "1.8.2",
-    "runtime": "electron",
-    "build_from_source": "true",
-    "disturl": "https://atom.io/download/electron"
+    "target": "0.37.4"
   }
 }
