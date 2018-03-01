@@ -30070,9 +30070,9 @@ var _reactDom = __webpack_require__(165);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _usbDetection = __webpack_require__(526);
+var _usb = __webpack_require__(526);
 
-var _usbDetection2 = _interopRequireDefault(_usbDetection);
+var _usb2 = _interopRequireDefault(_usb);
 
 var _semanticUiReact = __webpack_require__(527);
 
@@ -30100,7 +30100,7 @@ function _inherits(subClass, superClass) {
   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 } // ES6 Component
 
-// import usb from 'usb';
+// import usbDetect from 'usb-detection';
 
 
 // Search component created as a class
@@ -30108,14 +30108,12 @@ var Timer = function (_React$Component) {
   _inherits(Timer, _React$Component);
 
   _createClass(Timer, [{
+    key: 'deviceList',
+    value: function deviceList() {
+      console.log(_usb2.default.getDeviceList());
+    }
+  }, {
     key: 'render',
-
-    // deviceList() {
-    //   usb.on('attach', function(device) {
-    //     console.log(device);
-    //   });
-    // }
-
     value: function render() {
       var isPlaying = this.state.isPlaying;
       var isClicked = this.state.isClicked;
@@ -30144,8 +30142,8 @@ var Timer = function (_React$Component) {
         color: 'blue',
         size: 'huge',
         primary: true,
-        onClick: isDetected ? this.noDetect : this.yesDetect
-      }, isDetected ? 'Hide' : 'Show'), _react2.default.createElement(_semanticUiReact.Message, null, isDetected && this.deviceList)), _react2.default.createElement(_semanticUiReact.Segment, null, console.log('HELLO ELECTRON')))));
+        onClick: this.deviceList
+      })), _react2.default.createElement(_semanticUiReact.Segment, null))));
     }
   }]);
 
@@ -30206,17 +30204,20 @@ var Timer = function (_React$Component) {
         isTrue: true
       });
     }
-  }, {
-    key: 'deviceList',
-    value: function deviceList() {
-      _usbDetection2.default.startMonitoring();
-      _usbDetection2.default.find().then(function (devices) {
-        console.log(devices);
-      }).catch(function (err) {
-        console.log(err);
-      });
-      _usbDetection2.default.stopMonitoring();
-    }
+
+    // deviceList() {
+    //   usbDetect.startMonitoring();
+    //   usbDetect
+    //     .find()
+    //     .then(function(devices) {
+    //       console.log(devices);
+    //     })
+    //     .catch(function(err) {
+    //       console.log(err);
+    //     });
+    //   usbDetect.stopMonitoring();
+    // }
+
   }, {
     key: 'noD',
     value: function noD() {
@@ -39344,7 +39345,7 @@ module.exports = deprecated;
 /* 526 */
 /***/ (function(module, exports) {
 
-module.exports = require("usb-detection");
+module.exports = require("usb");
 
 /***/ }),
 /* 527 */

@@ -67,6 +67,7 @@ const config = {
   ],
 
   externals: {
+    usb: 'commonjs usb',
     'usb-detection': 'commonjs usb-detection'
   },
 

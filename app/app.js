@@ -1,8 +1,8 @@
 // ES6 Component
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import usb from 'usb';
-import usbDetect from 'usb-detection';
+import usb from 'usb';
+// import usbDetect from 'usb-detection';
 import {
   Item,
   Message,
@@ -20,11 +20,9 @@ import 'semantic-ui-css/semantic.min.css';
 
 // Search component created as a class
 class Timer extends React.Component {
-  // deviceList() {
-  //   usb.on('attach', function(device) {
-  //     console.log(device);
-  //   });
-  // }
+  deviceList() {
+    console.log(usb.getDeviceList());
+  }
 
   render() {
     const isPlaying = this.state.isPlaying;
@@ -92,13 +90,13 @@ class Timer extends React.Component {
                 color="blue"
                 size="huge"
                 primary
-                onClick={isDetected ? this.noDetect : this.yesDetect}
+                onClick={this.deviceList}
               >
-                {isDetected ? 'Hide' : 'Show'}
+                {/* {isDetected ? 'Hide' : 'Show'} */}
               </Button>
-              <Message>{isDetected && this.deviceList}</Message>
+              {/* <Message>{isDetected && deviceList}</Message> */}
             </Segment>
-            <Segment>{console.log('HELLO ELECTRON')}</Segment>
+            <Segment>{}</Segment>
           </Segment.Group>
         </Container>
       </div>
@@ -153,18 +151,18 @@ class Timer extends React.Component {
     });
   }
 
-  deviceList() {
-    usbDetect.startMonitoring();
-    usbDetect
-      .find()
-      .then(function(devices) {
-        console.log(devices);
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
-    usbDetect.stopMonitoring();
-  }
+  // deviceList() {
+  //   usbDetect.startMonitoring();
+  //   usbDetect
+  //     .find()
+  //     .then(function(devices) {
+  //       console.log(devices);
+  //     })
+  //     .catch(function(err) {
+  //       console.log(err);
+  //     });
+  //   usbDetect.stopMonitoring();
+  // }
 
   noD() {
     this.setState({
